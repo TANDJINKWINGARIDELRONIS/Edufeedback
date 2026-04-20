@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">
+            Edu<span>Feedback</span>
+        </a>
+        <span style="color:var(--gold); font-size:13px;">
+            INF 232 — EC2
+        </span>
+        <a class="navbar-links" href="/">Retour</a>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h1>Donnez votre avis</h1>
+            <p class="subtitle">Partagez votre expérience sur vos cours et enseignants</p>
+
+            {% if erreurs %}
+            <div class="alert alert-error">
+                <ul>
+                    {% for e in erreurs %}
+                    <li>{{ e }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <form action="/avis" method="POST">
+                <div class="form-group">
+                    <label for="nom">Nom : </label>
+                    <input type="text" name="nom" placeholder="Jean pierre" value="{{nom}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="filiere">Filiere :</label>
+                    <select name="filiere" id="" value="{{filiere}}">
+                        <option value="INFO">Informatique </option>
+                        <option value="MAT">Mathematique</option>
+                        <option value="BIOS">Biologie</option>
+                        <option value="GEOS">Geoscience</option>
+                        <option value="CHM">Chimie</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cours">Matiere :</label>
+                    <input type="text" name="cours" placeholder="Ex: INF 232" value="{{cours}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="enseignant">Enseignant :</label>
+                    <input type="text" name="enseignant" placeholder="Ex: M. Martin" value="{{enseignant}}">
+                </div>
+                <div class="form-group">
+                    <label for="note">Note :</label>
+                    <select name="note" value="{{note}}" required>
+                        <option value="1">⭐ 1 - Très mauvais</option>
+                        <option value="2">⭐⭐ 2 - Mauvais</option>
+                        <option value="3">⭐⭐⭐ 3 - Moyen</option>
+                        <option value="4">⭐⭐⭐⭐ 4 - Bien</option>
+                        <option value="5">⭐⭐⭐⭐⭐ 5 - Excellent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="commentaire">Commentaire :</label>
+                    <textarea name="commentaire" id="" cols="30" rows="10" placeholder="Donner votre avis ici "
+                        value="{{commentaire}}" required></textarea>
+                    <button type="submit" class="btn btn-primary">Soumettre</button>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>

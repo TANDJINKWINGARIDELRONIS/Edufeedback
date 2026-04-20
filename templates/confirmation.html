@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation — Edu Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a class="navbar-brand" href="/">Edu<span>Feedback</span></a>
+        <span style="color:var(--gold); font-size:13px;">INF 232 — EC2</span>
+    </nav>
+
+    <div class="container">
+        <div class="card" style="text-align:center;">
+
+            <!-- Icône succès -->
+            <div style="font-size:64px; margin-bottom:16px;">✅</div>
+
+            <h1 style="margin-bottom:10px;">Merci {{ nom }} !</h1>
+            <p class="subtitle">
+                Ton avis sur le cours <b>{{ cours }}</b>
+                a bien été enregistré avec la note <b>{{ note }}/5</b>.
+            </p>
+
+            <div class="divider">
+                </d iv>
+
+                <div class="btn-group">
+                    <a href="/avis" class="btn btn-primary">
+                        Donner un autre avis
+                    </a>
+                    <a href="/" class="btn btn-secondary">
+                        Accueil
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+</body>
+
+</html>
